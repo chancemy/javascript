@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <label for="score">請輸入分數</label>
+    <input type="text" name="score" id="score">
+    <input type="button" id="submit" value="檢查">
+    <span id="result"></span>
+    <script>
+        var score = document.querySelector('#score');
+        var btn = document.querySelector('#submit');
+        var ansText = document.querySelector('#result');
+        btn.onclick = function () {
+            var userNum = score.value;
+            userNum = Number(userNum);
+
+            console.log(typeof userNum);
+            console.log(Number.isInteger(userNum));
+
+            if (userNum < 0 || userNum == '' || !Number.isInteger(userNum)) {
+                //判斷輸入數字小於零 或 字串(型態非數字)
+                console.log(typeof userNum);
+                ansText.innerHTML = '輸入請大於0'; //將ansText
+
+            } else if (userNum < 60) {
+
+                ansText.innerHTML = '已等';
+                // console.log(ansText.innerHTML);
+                // JavaScript 的 innerHTML 其實屬於 HTML DOM 的一種功能，透過innerHTML 可以取得或設定 HTML Code 中的元素，也可以單純的將字串寫入 HTML Code 的某一個部分，innerHTML 可以搭配 HTML 的 Element Object 來執行，如 getElementById 或 getElementsByName 等，innerHTML 也是網頁設計師常用來設計與網友互動的網頁特效方法，所有主流的瀏覽器都支援 JavaScript innerHTML 功能。
+
+
+            } else if (userNum < 70) {
+
+                ansText.innerHTML = '戊等';
+
+            } else if (userNum < 80) {
+
+                ansText.innerHTML = '丁等';
+
+            } else if (userNum < 90) {
+
+                ansText.innerHTML = '丙等';
+
+            } else if (userNum == 100) {
+
+                ansText.innerHTML = '甲等';
+
+            } else {
+
+                ansText.innerHTML = '甲上';
+            }
+
+
+        }
+
+    </script>
+</body>
+
+</html>

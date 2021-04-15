@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box1{
+            width: 200px;
+            height: 200px;
+            background-color: red;
+        }
+        .checked{
+            background-color: blue;
+        }
+    </style>
+</head>
+<body>
+    <div class="box1"></div>
+    <script>
+        //目標連續點擊BOX1換顏色
+        
+        var box1 = document.querySelector('.box1') ;
+        //. dom元素
+        box1.onclick = function(){
+            if (box1.classList.contains('checked') ){
+                box1.classList.remove('checked');
+                // box1.classList.add('box1');
+
+            }else{
+                box1.classList.add('checked');
+            }
+            // box1.classList.add('checked');
+        }
+    </script>
+</body>
+</html>
