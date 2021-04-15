@@ -118,7 +118,7 @@
         <div class="gameCanvas">
             <h1>BMI計算機</h1>
             <div class="d-flex">
-                <span>請輸入身高(cm):</span><input id="height" type="text">
+                <span>請輸入身高:<br>(公尺或公分)</span><input id="height" type="text">
             </div>
             <div class="d-flex">
                 <span>請輸入體重(kg):</span><input id="weight" type="text">
@@ -138,17 +138,93 @@
     <script>
         var start_btn = document.querySelector("#start_btn") //開始計算
         var resultCanvas = document.querySelector(".resultCanvas") //顯示框架
-        var height = document.getElementById('height');
-        var weight =  document.getElementById('weight');
-        var userHeight = height.innerHTML ;
-        var userWeight = weight.innerHTML ;
-       
-
+        var height = document.querySelector('#height');
+        var weight =  document.querySelector('#weight');
+        var bmiValue = document.querySelector('#result_BMI');
+        var bodyStatus = document.querySelector('#result_bodyStatus');
+        var suggest = document.querySelector('#result_suggest');
+        var userHeight = 0;
+        var userWeight = 0;
+        var bmi = 0;
+        var bodyValue = [['體重過輕','多吃點吧'],['正常範圍','繼續保持'],['體重過重','該少吃點了喔！'],['體重肥胖','吃太多會被殺掉的']];
+        console.log(bodyValue[1][1]);
+        function checkNum(userNum){
+            var re = /^\d+(\.\d+)?$/;
+            var bln = "";
+            console.log(re.test(userNum)+'判斷是否為正浮點');
+            bln = re.test(userNum);
+            if(userNum == "" || !bln || userNum > 250){                    //判斷輸入是否是空字串 或 是否為正浮點數
+                alert('不可輸入空白或負數或超過250');               //是空字串 或 負數
+                return false;
+            }else{
+                return(userNum);
+            }
+        }
+        function changeCM(userNum){
+            if(userNum >= 100 && userNum <= 250){
+                userNum = userNum/100 ;
+                console.log('有轉換身高');
+                return(userNum);
+            }else if(userNum < 1 || userNum > 2.5){
+                alert('輸入不得小於1或大於2.5或小於100');               //是空字串 或 負數
+                return false;
+            }else{
+                return(userNum);
+            }
+        }
+        
+            
         start_btn.onclick = function(){
             resultCanvas.classList.add('active')
+            userHeight = height.value ;
+            userWeight = weight.value ;
              // 檢查是否抓到值
-            console.log(userHeight);
-            console.log(userWeight);
+            // console.log(userHeight);
+            // console.log(userWeight);
+            userHeight =  checkNum(userHeight);
+            if(userHeight == false){
+                return;
+            }
+            userHeight =  changeCM(userHeight);
+            if(userHeight == false){
+                return;
+            }
+            userWeight =  checkNum(userWeight);
+            if(userWeight == false){
+                return;
+            }
+            
+            console.log(userHeight+'H');
+            console.log(userWeight+'W');
+
+            
+            
+            userHeight = userHeight ** 2 ;
+            bmi = userWeight / userHeight ;
+            bmi = bmi.toFixed(2);
+            console.log(bmi + 'bmi');
+
+            if(bmi < 18.5){
+                bmiValue.innerHTML = bmi ;
+                console.log(bodyValue[0][0]);
+                bodyStatus.innerHTML = bodyValue[0][0] ;
+                suggest.innerHTML = bodyValue[0][1];
+            }else if(bmi < 24){
+                bmiValue.innerHTML = bmi ;
+                console.log(bodyValue[1][0]);
+                bodyStatus.innerHTML = bodyValue[1][0] ;
+                suggest.innerHTML = bodyValue[1][1];
+            }else if(bmi < 27){
+                bmiValue.innerHTML = bmi ;
+                console.log(bodyValue[2][0]);
+                bodyStatus.innerHTML = bodyValue[2][0] ;
+                suggest.innerHTML = bodyValue[2][1];
+            }else{
+                bmiValue.innerHTML = bmi ;
+                console.log(bodyValue[3][0]);
+                bodyStatus.innerHTML = bodyValue[3][0] ;
+                suggest.innerHTML = bodyValue[3][1];
+            }
         }
    
     
