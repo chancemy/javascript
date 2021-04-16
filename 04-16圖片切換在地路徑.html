@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        img {
+            width: 500px;
+            
+        }
+        .show{
+            transition: 3s;
+            opacity: 1;
+        }
+        .hide{
+            opacity: 0;
+        }
+    </style>
+</head>
+<body>
+    <img class="show" id="photo" onclick="changePhoto()" src="./img/cat1.jpg" alt="">
+    <script>
+        
+        function changePhoto(){
+            var photo = document.getElementById('photo');
+            var p1 = "./img/cat1.jpg";
+            var p2 = "./img/cat2.jpg"
+            var thisPhoto = photo.getAttribute('src');
+            photo.classList.toggle('hide');
+            if(thisPhoto == p1){
+                photo.setAttribute('src',p2);
+                photo.classList.toggle('hide');
+                console.log("p1");
+            }else{
+                // photo.classList.toggle('show');
+                photo.setAttribute('src',p1);
+                console.log("p2");
+
+            }
+        }
+    </script>
+</body>
+</html>

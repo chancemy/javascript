@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            box-sizing: border-box;        
+        }
+        body{
+            margin: 0px;
+        }
+        .container{
+            width: 80%;
+            
+            background-color: black;
+            padding: 20px;
+            margin: auto;
+        }
+        .btn-group{
+            width: 100%;
+            
+            padding: 20px;
+            background-color: blue;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .btn{
+            width: 100px;
+            height: 40px;
+            background-color: white;
+            
+        }
+        .btn:hover{
+            background-color: yellow;
+            border: black 1px solid;
+        }
+        .coontant-grouop{
+            width: 100%;
+            padding: 20px;
+            background-color: cyan;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .contant{
+            background-color: white;
+            width: 100%;
+            height: 33%;
+            display: none;
+
+        }
+        /* .active-off{
+            display: none;
+        } */
+        .active{
+            display: block;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="btn-group">
+            <div id="btnA" class="btn" onclick="tabChange('#btnA')">按鈕1</div>
+            <div id="btnB" class="btn" onclick="tabChange('#btnB')">按鈕2</div>
+            <div id="btnC" class="btn "onclick="tabChange('#btnC')">按鈕3</div>
+        </div>
+        <div  class="coontant-grouop">
+            <div id="div1" class="contant active-off  ">
+                <h1>A</h1>
+                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Iste doloribus ullam perferendis! Soluta voluptas deleniti quidem, iure possimus minus optio rerum dolorum voluptatibus eum hic debitis perspiciatis aliquam facere voluptate!</p>
+            </div>
+            <div id="div2" class="contant active-off">
+                <h1>B</h1>
+                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Iste doloribus ullam perferendis! Soluta voluptas deleniti quidem, iure possimus minus optio rerum dolorum voluptatibus eum hic debitis perspiciatis aliquam facere voluptate!</p>
+            </div>
+            <div id="div3" class="contant active-off">
+                <h1>C</h1>
+                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Iste doloribus ullam perferendis! Soluta voluptas deleniti quidem, iure possimus minus optio rerum dolorum voluptatibus eum hic debitis perspiciatis aliquam facere voluptate!</p>
+            </div>
+        </div>
+    </div>
+    <script>
+        var btnA = document.getElementById('btnA');
+        var btnB = document.getElementById('btnB');
+        var btnC = document.getElementById('btnC');
+        var div1 = document.getElementById('div1');
+        var div2 = document.getElementById('div2');
+        var div3 = document.getElementById('div3');
+        // btnA.onclick = tabChange('#btnA')
+        // btnB.onclick = tabChange('#btnB')
+        // btnC.onclick = tabChange('#btnC')
+
+        console.log(btnA);
+        function tabChange(btn){
+            
+            if(btn == '#btnA'){
+                div1.classList.add('active');
+                // div1.classList.remove('active-off');
+                div2.classList.remove('active');
+                // div2.classList.add('active-off');
+                div3.classList.remove('active');
+                // div3.classList.add('active-off');
+
+            }else if(btn == '#btnB'){
+                console.log("有近來");
+                div2.classList.add('active');
+                div2.classList.remove('active-off');
+
+                div1.classList.remove('active');
+                div3.classList.remove('active');
+                // div1.classList.add('active-off');
+                // div3.classList.add('active-off');
+            }else if(btn == '#btnC'){
+                div3.classList.add('active');
+                // div3.classList.remove('active-off');
+
+                div2.classList.remove('active');
+                div1.classList.remove('active');
+                // div2.classList.add('active-off');
+                // div1.classList.add('active-off');
+            }
+        }
+    </script>
+</body>
+</html>

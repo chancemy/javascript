@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .show{
+            transition: 1s;
+            opacity: 1;
+        }
+        .hide{
+            opacity: 0;
+        }
+    </style>
+</head>
+<body>
+    <img class="show" id="photo" onclick="changePhoto()" src="https://img.webmd.com/dtmcms/live/webmd/consumer_assets/site_images/article_thumbnails/other/cat_relaxing_on_patio_other/1800x1200_cat_relaxing_on_patio_other.jpg" alt="">
+    <script>
+        
+        function changePhoto(){
+            var photo = document.getElementById('photo');
+            var p1 = "https://img2020.cnblogs.com/blog/1088037/202004/1088037-20200407101935675-142421028.jpg";
+            var p2 = "https://img.webmd.com/dtmcms/live/webmd/consumer_assets/site_images/article_thumbnails/other/cat_relaxing_on_patio_other/1800x1200_cat_relaxing_on_patio_other.jpg"
+            var thisPhoto = photo.getAttribute('src');
+            if(thisPhoto == p1){
+                photo.classList.toggle('hide');
+                photo.setAttribute('src',p2);
+                
+            }else{
+                photo.classList.toggle('show');
+                photo.setAttribute('src',p1);
+
+            }
+        }
+    </script>
+</body>
+</html>
