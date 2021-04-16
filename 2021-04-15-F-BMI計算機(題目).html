@@ -136,52 +136,87 @@
 
     <script>
         var start_btn = document.querySelector("#start_btn");//開始計算
-        var reset_btn = document.querySelector('#reset_btn');
+        var reset_btn = document.querySelector('#reset_btn');//清除輸入欄位
         var resultCanvas = document.querySelector(".resultCanvas") //顯示框架
+
+        //以下定位輸入輸出欄位 身高 體重 BMI 身體狀態 建議 等欄位 
+
         var height = document.querySelector('#height');
         var weight =  document.querySelector('#weight');
         var bmiValue = document.querySelector('#result_BMI');
         var bodyStatus = document.querySelector('#result_bodyStatus');
         var suggest = document.querySelector('#result_suggest');
+
+        //初始化需要用到的變數 使用者輸入(身高/體重) bmi [[身體狀態,建議]]
+
         var userHeight = 0;
         var userWeight = 0;
         var bmi = 0;
         var bodyValue = [['體重過輕','多吃點吧'],['正常範圍','繼續保持'],['體重過重','該少吃點了喔！'],['體重肥胖','吃太多會被殺掉的']];
+        //檢查陣列是否正常
         console.log(bodyValue[1][1]);
+
+        // 函示 檢查使用者 輸入數值是否正確 檢查內容: 空字串 是否是正浮點數 超過250公分等
+
         function checkNum(userNum){
             var re = /^\d+(\.\d+)?$/;
             var bln = "";
             console.log(re.test(userNum)+'判斷是否為正浮點');
             bln = re.test(userNum);
-            if(userNum == "" || !bln || userNum > 250){                    //判斷輸入是否是空字串 或 是否為正浮點數
-                alert('不可輸入空白或負數或超過250');               //是空字串 或 負數
+            if(userNum == "" || !bln || userNum > 250){   
+
+            //判斷輸入是否是空字串 或 是否為正浮點數
+
+            alert('不可輸入空白或負數或超過250');  
+                //是空字串 或 負數 回傳false 讓主程式停止繼續運作
                 return false;
             }else{
+                // 檢查完 得到我們要的數字(此輸入針對身高及體重 通用檢查)
+                // 回傳值
                 return(userNum);
             }
         }
+
+        // 函示 上一輪檢查完代表輸入值是可接受範圍 
+        // 但這邊針對身高數值例外做處理
+        // 比如說 使用者輸入公分範圍 我們只取 >=100 公分以及 <=250 公分的範圍其餘排除
+        // 同理   使用者輸入公尺範圍 我們只取 >=1 公分以及 <=2.5 公分的範圍其餘排除
+        // 注意   if(userNum < 1 || userNum > 2.5) 此判斷方式將 <1 及 >2.5 的範圍排除
+    
         function changeCM(userNum){
             if(userNum >= 100 && userNum <= 250){
+                //將公分轉成公尺
                 userNum = userNum/100 ;
                 console.log('有轉換身高');
                 return(userNum);
             }else if(userNum < 1 || userNum > 2.5){
-                alert('輸入不得小於1或大於2.5或小於100');               //是空字串 或 負數
+                // alert 跳出小視窗 提醒使用者
+                alert('輸入不得小於1或大於2.5或小於100');
+                // 回傳false 讓主程式停止繼續運作 
                 return false;
             }else{
+                // 檢查完 得到我們要的數字(此輸入針對身高 檢查)
+                // 回傳值
                 return(userNum);
             }
         }
         
-            
+        // 主程式
+        // 按下計算按鈕
+
         start_btn.onclick = function(){
-            resultCanvas.classList.add('active')
+            // 將輸出畫面顯示出來
+            // 抓取使用者輸入的身高 體重
+            resultCanvas.classList.add('active') 
             userHeight = height.value ;
             userWeight = weight.value ;
-             // 檢查是否抓到值
+            // 檢查是否抓到值
             // console.log(userHeight);
             // console.log(userWeight);
+
+            // 此處 使用上面寫的函示 來檢查輸入數值是否正確 不正確則立即停止程式
             userHeight =  checkNum(userHeight);
+            // 如果回傳值是 false 代表檢查不通過 所以停止 return 可以用來結束程式
             if(userHeight == false){
                 return;
             }
@@ -193,40 +228,47 @@
             if(userWeight == false){
                 return;
             }
-            
+            // 再次檢查輸入是否符合範圍 有錯請修正檢查程式
             console.log(userHeight+'H');
             console.log(userWeight+'W');
 
-            
+            // BMI值 計算 檢查完的單位公尺
             
             userHeight = userHeight ** 2 ;
             bmi = userWeight / userHeight ;
+
+            // 只取小數兩位
             bmi = bmi.toFixed(2);
             console.log(bmi + 'bmi');
 
+            // 判斷bmi值的範為 並輸出三個值
+            // bmi  bodyValue 陣列共有四組答案 針對 bmi值去填入正確的值
+            // bodyValue[0][0] 第一個0代表第一組 第二個0代表第一組裡面的第一個值
+            // 請參照下面的值 以此類推
+            // var bodyValue = [['體重過輕','多吃點吧'],['正常範圍','繼續保持'],['體重過重','該少吃點了喔！'],['體重肥胖','吃太多會被殺掉的']];
+
             if(bmi < 18.5){
                 bmiValue.innerHTML = bmi ;
-                console.log(bodyValue[0][0]);
                 bodyStatus.innerHTML = bodyValue[0][0] ;
                 suggest.innerHTML = bodyValue[0][1];
             }else if(bmi < 24){
                 bmiValue.innerHTML = bmi ;
-                console.log(bodyValue[1][0]);
                 bodyStatus.innerHTML = bodyValue[1][0] ;
                 suggest.innerHTML = bodyValue[1][1];
             }else if(bmi < 27){
                 bmiValue.innerHTML = bmi ;
-                console.log(bodyValue[2][0]);
                 bodyStatus.innerHTML = bodyValue[2][0] ;
                 suggest.innerHTML = bodyValue[2][1];
             }else{
                 bmiValue.innerHTML = bmi ;
-                console.log(bodyValue[3][0]);
                 bodyStatus.innerHTML = bodyValue[3][0] ;
                 suggest.innerHTML = bodyValue[3][1];
             }
         }
         
+        // 清除按鈕 將字串設為空 且隱藏畫布
+        // 預設是隱藏 所以移除顯示的類別就可以
+
         reset_btn.onclick = function(){
             console.log("清除");
             height.value = "";
