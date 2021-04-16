@@ -104,7 +104,6 @@
             border-radius: 10px;
             opacity: 0;
             transition: 0.5s;
-
         }
 
         .resultCanvas.active {
@@ -136,7 +135,8 @@
     </div>
 
     <script>
-        var start_btn = document.querySelector("#start_btn") //開始計算
+        var start_btn = document.querySelector("#start_btn");//開始計算
+        var reset_btn = document.querySelector('#reset_btn');
         var resultCanvas = document.querySelector(".resultCanvas") //顯示框架
         var height = document.querySelector('#height');
         var weight =  document.querySelector('#weight');
@@ -226,7 +226,14 @@
                 suggest.innerHTML = bodyValue[3][1];
             }
         }
-   
+        
+        reset_btn.onclick = function(){
+            console.log("清除");
+            height.value = "";
+            weight.value = "";
+            resultCanvas.classList.remove('active');
+        }
+
     
     </script>
 </body>
