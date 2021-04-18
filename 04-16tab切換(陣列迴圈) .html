@@ -89,13 +89,32 @@
         var btns = document.querySelectorAll('.btn');
         var contents = document.querySelectorAll('.content');
 
-        for (let i = 0; i < btns.length; i++) {
-            btns[i].onclick = function(){
-                 
+        // for (let i = 0; i < btns.length; i++) {
+        //     btns[i].onclick = function(){ 
+        //         console.log(btns[i].innerHTML);
+        //         if(i == 0){
+        //             console.log(btns[i]+"我點到第"+i+"個");
+        //             contents[i].classList.add('active');
+        //             contents[i+1].classList.remove('active');               
+        //             contents[i+2].classList.remove('active');
+        //         }else if(i == 1){
+        //             contents[i].classList.add('active');
+        //             contents[i-1].classList.remove('active');               
+        //             contents[i+1].classList.remove('active');
+        //         }else if(i == 2){
+        //             contents[i].classList.add('active');
+        //             contents[i-1].classList.remove('active');               
+        //             contents[i-2].classList.remove('active');
+        //         }
+        //     }     
+        // }
 
+        for (let i = 0; i < btns.length; i++) {
+            
+            btns[i].onclick = function(){ 
                 
                 if(i == 0){
-                    console.log(btns[i]+"我點到第"+i+"個");
+                    // console.log(btns[i]+"我點到第"+i+"個");
                     contents[i].classList.add('active');
                     contents[i+1].classList.remove('active');               
                     contents[i+2].classList.remove('active');
@@ -108,12 +127,9 @@
                     contents[i-1].classList.remove('active');               
                     contents[i-2].classList.remove('active');
                 }
-                               
-
             }     
         }
-
-    
+        
     </script>
 </body>
 </html>
