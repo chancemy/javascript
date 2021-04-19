@@ -44,6 +44,8 @@
             border: 2px solid white;
             background-color: wheat;
             border-radius: 8px;
+            
+            
         }
     </style>
 </head>
@@ -65,61 +67,55 @@
         newGame()
         // 
         function newGame() {
-            for (let i = 0; i < level ** 2 ; i++) {
-                
-                
-            }
-            GamePanel.innerHTML = 
-            `
-            <div class="box"></div>
-            `;
-
-            var boxStyle = document.querySelector('.box').style;
             var length = 100 ;
-
-            // for (let i = 0; i < 9 ;i++) {
+            length = length / level ;
+            var r = Math.floor(Math.random() * 255);
+            var g = Math.floor(Math.random() * 255);
+            var b = Math.floor(Math.random() * 255);
+            for (let i = 0; i < level ** 2 ; i++) {
+                GamePanel.innerHTML += 
+                `
+                <div class="box"  ></div>
+                ` 
+                var boxs = document.querySelectorAll('.box');
+                console.log(boxs[i].style);
+                var boxStyle =  boxs[i].style ;
                 
-                if(level == 1){
-                    length = length  ;
-                    boxStyle.height =  ""+length+"%" ;
-                    boxStyle.width =  ""+length+"%" ;    
-                 }
-                 else if(level == 2){
-                    length = length / 2 ;
-                    boxStyle.height =  ""+length+"%" ;
-                    boxStyle.width =  ""+length+"%" ; 
-                    console.log(length);
-                }else if(level == 3){
-                    console.log(length);
-                    length = length / 3 ;
-                    boxStyle.height =  ""+length+"%" ;
-                    boxStyle.width =  ""+length+"%" ; 
-                }else if(level == 4){
-                    length = length / 4 ;
-                    boxStyle.height =  ""+length+"%" ;
-                    boxStyle.width =  ""+length+"%" ; 
-                }else if(level == 5){
-                    length = length / 5 ;
-                    boxStyle.height =  ""+length+"%" ;
-                    boxStyle.width =  ""+length+"%" ; 
-                }else if(level == 6){
-                    length = length / 6 ;
-                    boxStyle.height =  ""+length+"%" ;
-                    boxStyle.width =  ""+length+"%" ; 
-                }else if(level == 7){
-                    length = length / 7 ;
-                    boxStyle.height =  ""+length+"%" ;
-                    boxStyle.width =  ""+length+"%" ; 
-                }else if(level == 8){
-                    length = length / 8 ;
-                    boxStyle.height =  ""+length+"%" ;
-                    boxStyle.width =  ""+length+"%" ; 
-                }else if(level == 9){
-                    length = length / 9 ;
-                    boxStyle.height = ""+length+"%" ;
-                    boxStyle.width = ""+length+"%" ; 
-                }                   
-            // }
+
+                var color = "rgb("+ r+","+ g+","+ b+")"
+                console.log(color);
+                boxStyle.height =  ""+length+"%" ;
+                boxStyle.width =  ""+length+"%" ;
+                boxStyle.backgroundColor = color ;
+                console.log(length);
+            }
+            var ansBoxNum = Math.floor(Math.random() * (level ** 2))
+            var ans = boxs[ansBoxNum];
+            var ansStyle = boxs[ansBoxNum].style.opacity = "0.35";
+
+            ans.onclick = function(){
+                ansClick();
+            }
+            function ansClick(){
+                console.log(ansStyle+"AA");
+                level = level + 1;
+                ansStyle = ansStyle + 0.05;
+                console.log(level);
+                GamePanel.innerHTML = "";
+                newGame();
+                if(level == 10){
+                    alert('恭喜過關')
+                    level = 1;
+                    GamePanel.innerHTML = "";
+                    newGame();
+                }
+            }
+            
+             
+            
+
+            
+
             // 產生方塊
             // 調整方塊數量大小
             // 產生一個隨機顏色，賦予方塊
