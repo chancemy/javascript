@@ -112,13 +112,16 @@
         for (let i = 0; i < btns.length; i++) {
             
             btns[i].onclick = function(){ 
-                
-                if(i == 0){
+                for (let j = 0; j < btns.length; j++) {
+                    
+                    
+                }
+                if(i == j){
                     // console.log(btns[i]+"我點到第"+i+"個");
                     contents[i].classList.add('active');
                     contents[i+1].classList.remove('active');               
                     contents[i+2].classList.remove('active');
-                }else if(i == 1){
+                }else if(i == j){
                     contents[i].classList.add('active');
                     contents[i-1].classList.remove('active');               
                     contents[i+1].classList.remove('active');
