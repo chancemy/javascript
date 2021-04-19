@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            box-sizing: border-box;
+        }
+        body{
+            margin:  0 ;
+        }
+        .card-group{
+            width: 100%;
+            /* height: 100vh; */
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            align-items: flex-start;
+        }
+        .card{
+            width: 400px;
+            height: 600px;
+            margin-bottom: 20px;
+            background-color: cyan;
+            border:black 1px solid;
+        }
+
+        .photo{
+            width: 100%;
+            height: 60%;
+            background-color: crimson;
+        }
+        .photo img{
+            width: 100%;
+            height: 100%
+        }
+        .content{
+            width: 100%;
+            height: 40%;
+            padding: 10px 10px;
+            background-color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="card-group">
+        
+    </div>
+    <script>
+        //Object obj
+        
+        var teaMenu = [
+            {
+            name : "珍珠奶茶", 
+            photo : "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/collage-1605598757.jpg?crop=0.494xw:0.987xh;0.506xw,0.0128xh&resize=640:*",
+            price : "40" ,
+            content :  "珍珠/牛奶/紅茶"
+        },{
+            name : "紅茶", 
+            photo : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-7iRi69VMKXjgULOi08uEKdzuO7Ot4tBXVA&usqp=CAU",
+            price : "30" ,
+            content :  "台灣茶葉"
+        },{
+            name : "黑糖薑茶", 
+            photo : "https://scontent.frmq2-1.fna.fbcdn.net/v/t1.6435-9/47440592_2050299141675450_4642467443447431168_n.png?_nc_cat=111&ccb=1-3&_nc_sid=730e14&_nc_ohc=f48NJDAU6skAX8HQcx6&_nc_ht=scontent.frmq2-1.fna&oh=1c89d53a1ac6d91e47cb05dd4c14e48a&oe=60A19366",
+            price : "45" ,
+            content :  "黑糖/老薑"
+        },{
+            name : "冰淇淋紅茶", 
+            photo : "https://imgur.dcard.tw/zL6pNe0h.jpg",
+            price : "50" ,
+            content :  "香草冰淇淋/紅茶"
+        },{
+            name : "冰淇淋紅茶", 
+            photo : "https://imgur.dcard.tw/zL6pNe0h.jpg",
+            price : "50" ,
+            content :  "香草冰淇淋/紅茶"
+        },{
+            name : "冰淇淋紅茶", 
+            photo : "https://imgur.dcard.tw/zL6pNe0h.jpg",
+            price : "50" ,
+            content :  "香草冰淇淋/紅茶"
+        },{
+            name : "冰淇淋紅茶", 
+            photo : "https://imgur.dcard.tw/zL6pNe0h.jpg",
+            price : "50" ,
+            content :  "香草冰淇淋/紅茶"
+        },{
+            name : "冰淇淋紅茶", 
+            photo : "https://imgur.dcard.tw/zL6pNe0h.jpg",
+            price : "50" ,
+            content :  "香草冰淇淋/紅茶"
+        }
+        ]
+        var card_group = document.querySelector('.card-group');
+        console.log();
+        console.log(teaMenu);
+        // for (let i = 0; i < teaMenu.length; i++) {
+        //     card_group.innerHTML += `
+        //     <div class="card">
+        //         <div class="photo">
+        //             <img src="${teaMenu[i].photo}" alt="">
+        //         </div>
+        //         <div class="content">
+        //             <p>${teaMenu[i].name}</p>
+        //             <p>${teaMenu[i].price}</p>
+        //             <p>${teaMenu[i].content}</p>
+        //         </div>
+        //     </div>`  
+        // }
+
+        teaMenu.forEach(element => {
+            console.log(element.name);
+            card_group.innerHTML += `
+            <div class="card">
+                <div class="photo">
+                    <img src="${element.photo}" alt="">
+                </div>
+                <div class="content">
+                    <p>${element.name}</p>
+                    <p>${element.price}</p>
+                    <p>${element.content}</p>
+                </div>
+            </div>` 
+        });
+
+    </script>
+</body>
+</html>

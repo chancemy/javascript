@@ -57,7 +57,11 @@
         /* .active-off{
             display: none;
         } */
-        .active{
+        .btn-group .active{
+            background-color: cornflowerblue;
+        }
+
+        .content-grouop .active{
             display: block;
         }
         
@@ -69,8 +73,9 @@
             <div class="btn" >按鈕1</div>
             <div class="btn" >按鈕2</div>
             <div class="btn">按鈕3</div>
+            
         </div>
-        <div  class="coontant-grouop">
+        <div  class="content-grouop">
             <div  class="content active-off  ">
                 <h1>A</h1>
                 <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Iste doloribus ullam perferendis! Soluta voluptas deleniti quidem, iure possimus minus optio rerum dolorum voluptatibus eum hic debitis perspiciatis aliquam facere voluptate!</p>
@@ -109,28 +114,20 @@
         //     }     
         // }
 
+
         for (let i = 0; i < btns.length; i++) {
-            
             btns[i].onclick = function(){ 
-                for (let j = 0; j < btns.length; j++) {
-                    
-                    
-                }
-                if(i == j){
-                    // console.log(btns[i]+"我點到第"+i+"個");
-                    contents[i].classList.add('active');
-                    contents[i+1].classList.remove('active');               
-                    contents[i+2].classList.remove('active');
-                }else if(i == j){
-                    contents[i].classList.add('active');
-                    contents[i-1].classList.remove('active');               
-                    contents[i+1].classList.remove('active');
-                }else if(i == 2){
-                    contents[i].classList.add('active');
-                    contents[i-1].classList.remove('active');               
-                    contents[i-2].classList.remove('active');
-                }
+                clearnAll();
+                console.log(btns[i].innerHTML);
+                btns[i].classList.add('active');
+                contents[i].classList.add('active'); 
             }     
+        }
+        function clearnAll(){
+            for (let i = 0; i < btns.length; i++) {
+                btns[i].classList.remove('active');
+                contents[i].classList.remove('active') ;   
+            }
         }
         
     </script>
