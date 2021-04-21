@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./weather.css">
+    <title>Document</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <div class="btn-group container">
+            <div class="btn">今天中午</div>
+            <div class="btn">明天早上</div>
+            <div class="btn">明天下午</div>
+        </div>
+    </nav>
+    <main class="container">
+        <div class="weather-cards">
+            <!-- <div class="card">
+                <div class="main">
+                    <div class="img">
+                        <svg class="sunny wxPostion" viewbox="15 15 70 70">
+                            <circle id="sun" cx="50" cy="50" r="20">
+                                <animateTransform dur="5s" attributeName="transform" repeatCount="indefinite" type="rotate"
+                                    from="0,50,50" to="360,50,50" />
+                            </circle>
+                        </svg>
+                        <div class="infos">
+                            <div class="info area">台中</div>
+                            <div class="times">
+                                <div class="start">123</div>
+                                <div class="end">123</div>
+                            </div>
+                            <div class="info max-t">30</div>
+                            <div class="info min-t">24</div>
+                            <div class="info ci">舒爽</div>
+                            <div class="info pop">0%</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="second">
+                    <div class="second-card time2">
+                        <div class="times">
+                            <div class="start"></div>
+                            <div class="end"></div>
+                        </div>
+                        <div class="info max-t">30</div>
+                        <div class="info min-t">24</div>
+                        <div class="info ci">舒爽</div>
+                        <div class="info pop">0%</div>
+                    </div>
+                    <div class="second-card time3">
+                        <div class="times">
+                            <div class="start"></div>
+                            <div class="end"></div>
+                        </div>
+                        <div class="info max-t">30</div>
+                        <div class="info min-t">24</div>
+                        <div class="info ci">舒爽</div>
+                        <div class="info pop">0%</div>
+                    </div>
+                </div>
+            </div> -->
+        </div>
+    </main>
+    <footer></footer>
+
+    <div>
+        <svg class="sunny" viewbox="15 15 70 70">
+            <circle id="sun" cx="50" cy="50" r="20">
+                <animateTransform dur="5s" attributeName="transform" repeatCount="indefinite" type="rotate"
+                    from="0,50,50" to="360,50,50" />
+            </circle>
+        </svg>
+
+        <svg class="cloudy_sunny" viewbox="0 -5 100 100">
+            <circle id="sun" cx="60" cy="40" r="15">
+                <animateTransform dur="5s" attributeName="transform" repeatCount="indefinite" type="rotate"
+                    from="0,60,40" to="360,60,40" />
+            </circle>
+            <g id="cloud">
+                <circle cx="32" cy="35" r="15"></circle>
+                <circle cx="50" cy="40" r="14"></circle>
+                <rect width="70" height="30" x="5" y="35" rx="15"></rect>
+                <animateTransform attributeName="transform" type="translate" values="-5,10;10,10;-5,10" dur="2s"
+                    repeatCount="indefinite" />
+            </g>
+        </svg>
+
+        <svg class="cloudy" viewbox="0 0 100 100">
+            <g id="cloud">
+                <circle cx="37" cy="40" r="15"></circle>
+                <circle cx="55" cy="45" r="14"></circle>
+                <rect width="70" height="30" x="10" y="40" rx="15"></rect>
+                <animateTransform attributeName="transform" type="translate" values="10,0;-5,0;10,0" dur="2s"
+                    repeatCount="indefinite" />
+            </g>
+            <g id="cloud2">
+                <circle cx="32" cy="35" r="13"></circle>
+                <circle cx="50" cy="40" r="12"></circle>
+                <rect width="70" height="30" x="5" y="40" rx="15"></rect>
+                <animateTransform attributeName="transform" type="translate" values="-5,20;10,20;-5,20" dur="2s"
+                    repeatCount="indefinite" />
+            </g>
+            <animateTransform attributeName="transform" dur="0.1s" type="scale" values="1.5" />
+        </svg>
+
+        <svg class="overcast" viewbox="0 0 100 100">
+            <g id="overcast_cloud">
+                <circle cx="37" cy="40" r="15"></circle>
+                <circle cx="55" cy="45" r="14"></circle>
+                <rect width="70" height="30" x="10" y="40" rx="15"></rect>
+                <animateTransform attributeName="transform" type="translate" values="10,0;-5,0;10,0" dur="2s"
+                    repeatCount="indefinite" />
+            </g>
+            <g id="overcast_cloud2">
+                <circle cx="32" cy="35" r="13"></circle>
+                <circle cx="50" cy="40" r="12"></circle>
+                <rect width="70" height="30" x="5" y="40" rx="15"></rect>
+                <animateTransform attributeName="transform" type="translate" values="-5,20;10,20;-5,20" dur="2s"
+                    repeatCount="indefinite" />
+            </g>
+        </svg>
+
+        <svg class="rainy" viewbox="0 10 100 100">
+            <g id="rain">
+                <rect width="2" height="7" x="45" y="60" rx="1">
+                    <animateTransform dur="1.5s" attributeName="transform" repeatCount="indefinite" type="rotate"
+                        values="30,10,50;30,-150,-20" />
+                </rect>
+                <rect width="2" height="7" x="60" y="60" rx="1">
+                    <animateTransform dur="1.8s" attributeName="transform" repeatCount="indefinite" type="rotate"
+                        values="30,50,50;30,-150,-20" />
+                </rect>
+                <rect width="2" height="7" x="75" y="55" rx="1">
+                    <animateTransform dur="1.3s" attributeName="transform" repeatCount="indefinite" type="rotate"
+                        values="30,50,60;30,-150,-20" />
+                </rect>
+                <rect width="2" height="7" x="65" y="45" rx="1">
+                    <animateTransform dur="1.2s" attributeName="transform" repeatCount="indefinite" type="rotate"
+                        values="30,50,60;30,-150,-20" />
+                </rect>
+                <animateTransform link attributeName="transform" type="translate" values="-5,-5;10,0;-5,-5" dur="2s"
+                    repeatCount="indefinite" />
+            </g>
+            <g id="overcast_cloud">
+                <circle cx="37" cy="40" r="15"></circle>
+                <circle cx="55" cy="45" r="14"></circle>
+                <rect width="70" height="30" x="10" y="40" rx="15"></rect>
+                <animateTransform attributeName="transform" type="translate" values="10,0;-5,0;10,0" dur="2s"
+                    repeatCount="indefinite" />
+            </g>
+            <g id="overcast_cloud2">
+                <circle cx="32" cy="35" r="13"></circle>
+                <circle cx="50" cy="40" r="12"></circle>
+                <rect width="70" height="30" x="5" y="40" rx="15"></rect>
+                <animateTransform attributeName="transform" type="translate" values="-5,15;10,15;-5,15" dur="2s"
+                    repeatCount="indefinite" />
+            </g>
+        </svg>
+
+        <svg class="rainy_thunder" viewbox="0 10 100 100">
+            <g id="rain">
+                <rect width="2" height="7" x="45" y="60" rx="1">
+                    <animateTransform dur="0.6s" attributeName="transform" repeatCount="indefinite" type="rotate"
+                        values="30,10,50;30,-150,-20" />
+                </rect>
+                <rect width="2" height="7" x="60" y="60" rx="1">
+                    <animateTransform dur="0.8s" attributeName="transform" repeatCount="indefinite" type="rotate"
+                        values="30,50,50;30,-150,-20" />
+                </rect>
+                <rect width="2" height="7" x="75" y="55" rx="1">
+                    <animateTransform dur="0.7s" attributeName="transform" repeatCount="indefinite" type="rotate"
+                        values="30,50,60;30,-150,-20" />
+                </rect>
+                <rect width="2" height="7" x="65" y="45" rx="1">
+                    <animateTransform dur="0.5s" attributeName="transform" repeatCount="indefinite" type="rotate"
+                        values="30,50,60;30,-150,-20" />
+                </rect>
+                <animateTransform link attributeName="transform" type="translate" values="-5,-5;10,0;-5,-5" dur="2s"
+                    repeatCount="indefinite" />
+            </g>
+            <g>
+                <polyline id="thunder" points="50,38 46,50 52,50 50,60 56,47 50,47 50,38">
+                    <animateTransform dur="2.5s" attributeName="transform" repeatCount="indefinite" type="rotate"
+                        values="30,50,60;30,-150,-20" />
+                </polyline>
+                <polyline id="thunder" points="50,38 46,50 52,50 50,60 56,47 50,47 50,38">
+                    <animateTransform dur="3s" attributeName="transform" repeatCount="indefinite" type="rotate"
+                        values="10,60,100;-100,200,10" />
+                </polyline>
+            </g>
+            <g id="overcast_cloud">
+                <circle cx="37" cy="40" r="15"></circle>
+                <circle cx="55" cy="45" r="14"></circle>
+                <rect width="70" height="30" x="10" y="40" rx="15"></rect>
+                <animateTransform attributeName="transform" type="translate" values="10,0;-5,0;10,0" dur="2s"
+                    repeatCount="indefinite" />
+            </g>
+            <g id="overcast_cloud2">
+                <circle cx="32" cy="35" r="13"></circle>
+                <circle cx="50" cy="40" r="12"></circle>
+                <rect width="70" height="30" x="5" y="40" rx="15"></rect>
+                <animateTransform attributeName="transform" type="translate" values="-5,15;10,15;-5,15" dur="2s"
+                    repeatCount="indefinite" />
+            </g>
+        </svg>
+    </div>
+    <script>
+        var btns = document.querySelectorAll('.btn');
+        // console.log(btns);
+        btns.forEach((element, index) => {
+
+            element.onclick = function () {
+                console.log("按鈕" + index);
+            }
+
+        });
+
+
+        var cards = document.querySelector('.weather-cards')
+        fetch('https://opendata.cwb.gov.tw/api/v1/rest/datastore/F-C0032-001?Authorization=CWB-016FABC1-7F7C-4E43-9E47-19233DA51862')
+            .then(function (response) {
+                return response.json();
+            })
+            .then(function (myJson) {
+                console.log(myJson);
+                // console.log(myJson.records.location);
+                var obj = myJson.records.location;
+                // console.log(obj[0]);
+                obj.forEach(element => {
+
+                    // console.log(element);
+                    // console.log(element.locationName+"地點");
+                    // console.log(element.weatherElement[4].time[0].parameter.parameterName+"最高溫度");
+                    // console.log(element.weatherElement[2].time[0].parameter.parameterName+"最低溫度");
+                    // console.log(element.weatherElement[3].time[0].parameter.parameterName+"舒適度");
+                    // console.log(element.weatherElement[1].time[0].parameter.parameterName+"濕度");
+                    // console.log(element.weatherElement[0].time[0].startTime+"開始時間");
+                    // console.log(element.weatherElement[0].time[0].endTime+"結束時間");
+                    // console.log(element.locationName+"地點");
+                    var locatione = element.locationName;
+                    var pmWx = element.weatherElement[0].time[0].parameter.parameterName;
+                    var pmStartTime = element.weatherElement[0].time[0].startTime;
+                    var pmEndtTime = element.weatherElement[0].time[0].endTime;
+                    var pmMaxT = element.weatherElement[4].time[0].parameter.parameterName;
+                    var pmMinT = element.weatherElement[2].time[0].parameter.parameterName;
+                    var pmCi = element.weatherElement[3].time[0].parameter.parameterName;
+                    var pmPop = element.weatherElement[1].time[0].parameter.parameterName;
+
+                    var tomoroAmWx = element.weatherElement[0].time[0].parameter.parameterName;
+                    var tomoroAmStartTime = element.weatherElement[0].time[1].startTime;
+                    var tomoroAmEndtTime = element.weatherElement[0].time[1].endTime;
+                    var tomoroAmMaxT = element.weatherElement[4].time[1].parameter.parameterName;
+                    var tomoroAmMinT = element.weatherElement[2].time[1].parameter.parameterName;
+                    var tomoroAmCi = element.weatherElement[3].time[1].parameter.parameterName;
+                    var tomoroAmPop = element.weatherElement[1].time[1].parameter.parameterName;
+
+                    var tomoroPmWx = element.weatherElement[0].time[0].parameter.parameterName;
+                    var tomoroPmStartTime = element.weatherElement[0].time[2].startTime;
+                    var tomoroPmEndtTime = element.weatherElement[0].time[2].endTime;
+                    var tomoroPmMaxT = element.weatherElement[4].time[2].parameter.parameterName;
+                    var tomoroPmMinT = element.weatherElement[2].time[2].parameter.parameterName;
+                    var tomoroPmCi = element.weatherElement[3].time[2].parameter.parameterName;
+                    var tomoroPmPop = element.weatherElement[1].time[2].parameter.parameterName;
+                    var parameterValue = element.weatherElement[0].time[0].parameter.parameterValue;
+
+                    var weatherImg = "";
+                    var sunImg = `
+                    <svg class="sunny wxPostion" viewbox="15 15 70 70">
+                        <circle id="sun" cx="50" cy="50" r="20">
+                            <animateTransform dur="5s" attributeName="transform" repeatCount="indefinite" type="rotate" from="0,50,50"
+                                to="360,50,50" />
+                        </circle>
+                    </svg>
+                    ` ;
+                    var sunCloudImg = `
+                    <svg class="cloudy_sunny  wxPostion" viewbox="0 -5 100 100">
+                        <circle id="sun" cx="60" cy="40" r="15">
+                            <animateTransform dur="5s" attributeName="transform" repeatCount="indefinite" type="rotate" from="0,60,40"
+                                to="360,60,40" />
+                        </circle>
+                        <g id="cloud">
+                            <circle cx="32" cy="35" r="15"></circle>
+                            <circle cx="50" cy="40" r="14"></circle>
+                            <rect width="70" height="30" x="5" y="35" rx="15"></rect>
+                            <animateTransform attributeName="transform" type="translate" values="-5,10;10,10;-5,10" dur="2s"
+                                repeatCount="indefinite" />
+                        </g>
+                    </svg>
+                    `    ;
+                    var cloudImg = `
+                    <svg class="cloudy wxPostion" viewbox="0 0 100 100">
+                        <g id="cloud">
+                            <circle cx="37" cy="40" r="15"></circle>
+                            <circle cx="55" cy="45" r="14"></circle>
+                            <rect width="70" height="30" x="10" y="40" rx="15"></rect>
+                            <animateTransform attributeName="transform" type="translate" values="10,0;-5,0;10,0" dur="2s"
+                                repeatCount="indefinite" />
+                        </g>
+                        <g id="cloud2">
+                            <circle cx="32" cy="35" r="13"></circle>
+                            <circle cx="50" cy="40" r="12"></circle>
+                            <rect width="70" height="30" x="5" y="40" rx="15"></rect>
+                            <animateTransform attributeName="transform" type="translate" values="-5,20;10,20;-5,20" dur="2s"
+                                repeatCount="indefinite" />
+                        </g>
+                        <animateTransform attributeName="transform" dur="0.1s" type="scale" values="1.5"/>
+                    </svg>
+                    `
+                    var rainImg = `
+                    <svg class="rainy wxPostion" viewbox="0 10 100 100">
+                        <g id="rain">
+                            <rect width="2" height="7" x="45" y="60" rx="1">
+                                <animateTransform dur="1.5s" attributeName="transform" repeatCount="indefinite" type="rotate"
+                                    values="30,10,50;30,-150,-20" />
+                            </rect>
+                            <rect width="2" height="7" x="60" y="60" rx="1">
+                                <animateTransform dur="1.8s" attributeName="transform" repeatCount="indefinite" type="rotate"
+                                    values="30,50,50;30,-150,-20" />
+                            </rect>
+                            <rect width="2" height="7" x="75" y="55" rx="1">
+                                <animateTransform dur="1.3s" attributeName="transform" repeatCount="indefinite" type="rotate"
+                                    values="30,50,60;30,-150,-20" />
+                            </rect>
+                            <rect width="2" height="7" x="65" y="45" rx="1">
+                                <animateTransform dur="1.2s" attributeName="transform" repeatCount="indefinite" type="rotate"
+                                    values="30,50,60;30,-150,-20" />
+                            </rect>
+                            <animateTransform link attributeName="transform" type="translate" values="-5,-5;10,0;-5,-5" dur="2s"
+                                repeatCount="indefinite" />
+                        </g>
+                        <g id="overcast_cloud">
+                            <circle cx="37" cy="40" r="15"></circle>
+                            <circle cx="55" cy="45" r="14"></circle>
+                            <rect width="70" height="30" x="10" y="40" rx="15"></rect>
+                            <animateTransform attributeName="transform" type="translate" values="10,0;-5,0;10,0" dur="2s"
+                                repeatCount="indefinite" />
+                        </g>
+                        <g id="overcast_cloud2">
+                            <circle cx="32" cy="35" r="13"></circle>
+                            <circle cx="50" cy="40" r="12"></circle>
+                            <rect width="70" height="30" x="5" y="40" rx="15"></rect>
+                            <animateTransform attributeName="transform" type="translate" values="-5,15;10,15;-5,15" dur="2s"
+                                repeatCount="indefinite" />
+                        </g>
+                    </svg>
+                    `;
+                    var thunderImg = `
+                <svg class="rainy_thunder wxPostion" viewbox="0 10 100 100">
+                    <g id="rain">
+                        <rect width="2" height="7" x="45" y="60" rx="1">
+                            <animateTransform dur="0.6s" attributeName="transform" repeatCount="indefinite" type="rotate"
+                                values="30,10,50;30,-150,-20" />
+                        </rect>
+                        <rect width="2" height="7" x="60" y="60" rx="1">
+                            <animateTransform dur="0.8s" attributeName="transform" repeatCount="indefinite" type="rotate"
+                                values="30,50,50;30,-150,-20" />
+                        </rect>
+                        <rect width="2" height="7" x="75" y="55" rx="1">
+                            <animateTransform dur="0.7s" attributeName="transform" repeatCount="indefinite" type="rotate"
+                                values="30,50,60;30,-150,-20" />
+                        </rect>
+                        <rect width="2" height="7" x="65" y="45" rx="1">
+                            <animateTransform dur="0.5s" attributeName="transform" repeatCount="indefinite" type="rotate"
+                                values="30,50,60;30,-150,-20" />
+                        </rect>
+                        <animateTransform link attributeName="transform" type="translate" values="-5,-5;10,0;-5,-5" dur="2s"
+                            repeatCount="indefinite" />
+                    </g>
+                    <g>
+                        <polyline id="thunder" points="50,38 46,50 52,50 50,60 56,47 50,47 50,38">
+                            <animateTransform dur="2.5s" attributeName="transform" repeatCount="indefinite" type="rotate"
+                                values="30,50,60;30,-150,-20" />
+                        </polyline>
+                        <polyline id="thunder" points="50,38 46,50 52,50 50,60 56,47 50,47 50,38">
+                            <animateTransform dur="3s" attributeName="transform" repeatCount="indefinite" type="rotate"
+                                values="10,60,100;-100,200,10" />
+                        </polyline>
+                    </g>
+                    <g id="overcast_cloud">
+                        <circle cx="37" cy="40" r="15"></circle>
+                        <circle cx="55" cy="45" r="14"></circle>
+                        <rect width="70" height="30" x="10" y="40" rx="15"></rect>
+                        <animateTransform attributeName="transform" type="translate" values="10,0;-5,0;10,0" dur="2s"
+                            repeatCount="indefinite" />
+                    </g>
+                    <g id="overcast_cloud2">
+                        <circle cx="32" cy="35" r="13"></circle>
+                        <circle cx="50" cy="40" r="12"></circle>
+                        <rect width="70" height="30" x="5" y="40" rx="15"></rect>
+                        <animateTransform attributeName="transform" type="translate" values="-5,15;10,15;-5,15" dur="2s"
+                            repeatCount="indefinite" />
+                    </g>
+                </svg>
+                `
+                    if (parameterValue == 1) {
+                        weatherImg = sunImg;
+                    } else if (parameterValue == 2 || parameterValue == 3) {
+                        weatherImg = sunCloudImg;
+                    } else if (parameterValue == 4 || parameterValue == 5 || parameterValue == 6 || parameterValue == 7) {
+                        weatherImg = cloudImg
+                    } else if (parameterValue == 8 || parameterValue == 9 || parameterValue == 10 || parameterValue == 11 || parameterValue == 12 || parameterValue == 13 || parameterValue == 14) {
+                        weatherImg = rainImg
+                    } else if (parameterValue == 15 || parameterValue == 16 || parameterValue == 17 || parameterValue == 18) {
+                        weatherImg = thunderImg
+                    }
+
+
+                    cards.innerHTML += `
+                <div class="card">
+                    
+                    <div class="main">
+                        <div class="img">
+                            ${weatherImg}
+                            <div class="info-groups">
+                                <div class="location">${locatione}</div>
+                                <div class="times">
+                                    <div class="start">${pmStartTime}</div>
+                                    <div class="end">${pmEndtTime}</div>
+                                </div>
+                                <div class="infos">
+                                    <div class="info max-t">天氣預報:${pmWx}度</div>
+                                    <div class="info max-t">最高${pmMaxT}度</div>
+                                    <div class="info min-t">最低${pmMinT}度</div>
+                                    <div class="info ci">${pmCi}</div>
+                                    <div class="info pop">降雨機率:${pmPop}%</div>
+                                </div> 
+                            </div>
+                        </div>
+                    </div>
+                    <div class="second">
+                        <div class="second-card time2 ">
+                            ${weatherImg}
+                            <div class="times">
+                                <div class="start">${tomoroAmStartTime}</div>
+                                <div class="end">${tomoroAmEndtTime}</div>
+                            </div>
+                            <div class="infos">
+                                <div class="info max-t">天氣預報:${tomoroAmWx}度</div>
+                                <div class="info max-t">最高${tomoroAmMaxT}度</div>
+                                <div class="info min-t">最低${tomoroAmMinT}度</div>
+                                <div class="info ci">${tomoroAmCi}</div>
+                                <div class="info pop">降雨機率:${tomoroAmPop}%</div>    
+                            </div> 
+                        </div>
+                        <div class="second-card time3">
+                            ${weatherImg}
+                            <div class="times">
+                                <div class="start">${tomoroPmStartTime}</div>
+                                <div class="end">${tomoroPmEndtTime}</div>
+                            </div>
+                            <div class="infos">
+                                <div class="info max-t">天氣預報:${tomoroPmWx}度</div>
+                                <div class="info max-t">最高${tomoroPmMaxT}度</div>
+                                <div class="info min-t">最低${tomoroPmMinT}度</div>
+                                <div class="info ci">${tomoroPmCi}</div>
+                                <div class="info pop">降雨機率:${tomoroPmPop}%</div>
+                            </div> 
+                            
+                        </div>
+                    </div>
+                </div>
+                `
+                });
+
+
+            });
+
+    </script>
+</body>
+
+</html>
