@@ -21,7 +21,7 @@
 <body>
     <nav>
         <div class="btn-group container">
-            <div class="btn">今天中午</div>
+            <div class="btn ">今天中午</div>
             <div class="btn">明天早上</div>
             <div class="btn">明天下午</div>
         </div>
@@ -219,18 +219,11 @@
         </svg>
     </div>
     <script>
-        var btns = document.querySelectorAll('.btn');
-        // console.log(btns);
-        btns.forEach((element, index) => {
+        loading();
+        
 
-            element.onclick = function () {
-                console.log("按鈕" + index);
-            }
-
-        });
-
-
-        var cards = document.querySelector('.weather-cards')
+        function loading(){
+            var cards = document.querySelector('.weather-cards')
         fetch('https://opendata.cwb.gov.tw/api/v1/rest/datastore/F-C0032-001?Authorization=CWB-016FABC1-7F7C-4E43-9E47-19233DA51862')
             .then(function (response) {
                 return response.json();
@@ -423,7 +416,7 @@
                 <div class="card">
                     
                     <div class="main">
-                        <div class="img">
+                        <div class="img time1" >
                             ${weatherImg}
                             <div class="info-groups">
                                 <div class="location">${locatione}</div>
@@ -475,9 +468,32 @@
                 </div>
                 `
                 });
+                var time = document.querySelectorAll('.time1');
+                // console.log(times);
+                var btns = document.querySelectorAll('.btn');
+        
+                // console.log(times);
+                // console.log(btns);
+                btns.forEach((element, index) => {
 
-
+                    element.onclick = function () {
+                        console.log("按鈕" + index);
+                        clearActive();
+                        btns[index].classList.add('active'); 
+                        if(index == 0){
+                            time[index].classList.add('active');
+                        } 
+                    }
+                });
+                function clearActive() {
+                    btns.forEach(element => {
+                    element.classList.remove('active');
+                });
+                }
+                
             });
+        }
+        
 
     </script>
 </body>
