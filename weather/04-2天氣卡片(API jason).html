@@ -468,20 +468,56 @@
                 </div>
                 `
                 });
-                var time = document.querySelectorAll('.time1');
+                var time1 = document.querySelectorAll('.time1');
+                var time2 = document.querySelectorAll('.time2');
+                var time3 = document.querySelectorAll('.time3');
+                var secondCard = document.querySelectorAll('.second-card')
+                var imgCard = document.querySelectorAll('.img')
                 // console.log(times);
                 var btns = document.querySelectorAll('.btn');
-        
-                // console.log(times);
+                function addTime1(){
+                    time1.forEach(i => {
+                    i.classList.add('active');
+                });
+                };
+                function addTime2(){
+                    time2.forEach(i => {
+                    i.classList.add('active');
+                });
+                };
+                function addTime3(){
+                    time3.forEach(i => {
+                    i.classList.add('active');
+                });
+                };
+                function removeSecondCard(){
+                    secondCard.forEach(i => {
+                        i.classList.remove('active')
+                    });
+                };
+                function removeImgCard(){
+                    imgCard.forEach(i => {
+                        i.classList.remove('active')
+                    });
+                };
+                
+                console.log(time1);
                 // console.log(btns);
                 btns.forEach((element, index) => {
 
                     element.onclick = function () {
+                        
                         console.log("按鈕" + index);
                         clearActive();
+                        removeSecondCard();
+                        removeImgCard();
                         btns[index].classList.add('active'); 
                         if(index == 0){
-                            time[index].classList.add('active');
+                            addTime1();
+                        }else if(index == 1){
+                            addTime2();
+                        }else if(index == 2){
+                            addTime3();
                         } 
                     }
                 });
