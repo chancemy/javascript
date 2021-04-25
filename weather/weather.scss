@@ -5,11 +5,19 @@
     padding: 0 5%;
 
 }
+body{
+    background-image: url(./img/moring.jpeg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+}
+
 nav{
     .btn-group{
         width: 100%;
         height: 64px;
-        background-color: rgb(23, 232, 247);
+        // background-color: rgb(23, 232, 247);
         margin-bottom: 20px;
         display: flex;
         justify-content: space-around;
@@ -41,8 +49,9 @@ main{
         
         .card{
             width: 300px;
-            // height: 600px;
-            background-color: rgb(23, 232, 247);
+            // height: 237px;
+            // overflow: hidden;
+            background-color:rgba(0, 0, 0, 0.3);
             margin-bottom: 20px;
             border-radius: 30px;
             
@@ -51,14 +60,14 @@ main{
             .main{
                 // background-color: rgba($color: black, $alpha: 1);
                 width: 100%;
-                height: 40%;
+                // height: 40%;
                 display: block;
             
                
                 .img{
                     width: 100%;
                     height: 100%;
-                    display: none;
+                    // display: none;
                     justify-content: flex-start;
                     align-items: center;
                     padding: 0 5%;
@@ -110,19 +119,27 @@ main{
             }
             .second{
                 width: 100%;
-                height: 60%;
+                height: 0;
+                position: relative;
+                transition: 1s;
                 .second-card{
                     width: 100%;
                     // height: 50%;
-                    // border: black 1px solid;
-                    border-radius: 30px;
-                    background-color: rgb(23, 232, 247);
-                    display: none;
+                    border: black 1px solid;
+                    border-radius:  30px ;
+                    // background-color:rgba(0, 0, 0, 0.3);
+                    // display: none;
                     flex-direction: column;
                     justify-content: space-around;
                     align-items: flex-start;
                     padding: 0 5%;
-                    position: relative;
+                    position: absolute;
+                    top: -237px;
+                    left: 0px;
+                    opacity: 0;
+                    transition: 1s;
+                    
+                   
                     .wxPostion{
                         position: absolute;
                         top: 0;
@@ -130,37 +147,61 @@ main{
                         z-index: 1;
                         // opacity: 0.8;
                     }
-                    .times{
+                    .info-groups{
+                        width: 100%;
+                        height: 50%;
                         display: flex;
                         flex-direction: column;
-                        justify-content: center;
-                        align-self: flex-start;
-                        // height: 40%;
-                        .start{
-                            margin: 5px 0;
-                        }
-                        .end{
-                            margin: 5px 0;
-                        }
-                       
-                    }
-                    .infos{
-                        // height: 60%;
-                        display: flex;
-                        flex-direction: column;
-                        flex-wrap: wrap;
                         justify-content: space-around;
                         align-items: flex-start;
-                        .info{
-                            margin: 5px 0;
-                            
+                        z-index: 2;
+                        .times{
+                            display: flex;
+                            flex-direction: column;
+                            justify-content: center;
+                            align-self: flex-start;
+                            // height: 40%;
+                            .start{
+                                margin: 5px 0;
+                            }
+                            .end{
+                                margin: 5px 0;
+                            }
+                           
+                        }
+                        .infos{
+                            // height: 60%;
+                            display: flex;
+                            flex-direction: column;
+                            flex-wrap: wrap;
+                            justify-content: space-around;
+                            align-items: flex-start;
+                            .info{
+                                margin: 5px 0;
+                                
+                            }
                         }
                     }
+                    
                 }
+                
                 .second-card.active{
                     display: flex;
+                    opacity: 1;
                 }
+                .second-card.show-card{
+                    position: absolute;
+                    top: 0px;
+                    left: 0px;
+                    transition: 1s;
+                } 
+                
             }
+            .second.show-second{
+                height: 226px;
+                transition: 1s;
+                }
+           
         }
     }
 }

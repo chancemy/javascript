@@ -4,10 +4,16 @@
   padding: 0 5%;
 }
 
+body {
+  background-image: url(./img/moring.jpeg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
 nav .btn-group {
   width: 100%;
   height: 64px;
-  background-color: #17e8f7;
   margin-bottom: 20px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -56,21 +62,19 @@ main .weather-cards {
 
 main .weather-cards .card {
   width: 300px;
-  background-color: #17e8f7;
+  background-color: rgba(0, 0, 0, 0.3);
   margin-bottom: 20px;
   border-radius: 30px;
 }
 
 main .weather-cards .card .main {
   width: 100%;
-  height: 40%;
   display: block;
 }
 
 main .weather-cards .card .main .img {
   width: 100%;
   height: 100%;
-  display: none;
   -webkit-box-pack: start;
       -ms-flex-pack: start;
           justify-content: flex-start;
@@ -149,14 +153,16 @@ main .weather-cards .card .main .img.active {
 
 main .weather-cards .card .second {
   width: 100%;
-  height: 60%;
+  height: 0;
+  position: relative;
+  -webkit-transition: 1s;
+  transition: 1s;
 }
 
 main .weather-cards .card .second .second-card {
   width: 100%;
+  border: black 1px solid;
   border-radius: 30px;
-  background-color: #17e8f7;
-  display: none;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
@@ -167,7 +173,12 @@ main .weather-cards .card .second .second-card {
       -ms-flex-align: start;
           align-items: flex-start;
   padding: 0 5%;
-  position: relative;
+  position: absolute;
+  top: -237px;
+  left: 0px;
+  opacity: 0;
+  -webkit-transition: 1s;
+  transition: 1s;
 }
 
 main .weather-cards .card .second .second-card .wxPostion {
@@ -177,7 +188,25 @@ main .weather-cards .card .second .second-card .wxPostion {
   z-index: 1;
 }
 
-main .weather-cards .card .second .second-card .times {
+main .weather-cards .card .second .second-card .info-groups {
+  width: 100%;
+  height: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  z-index: 2;
+}
+
+main .weather-cards .card .second .second-card .info-groups .times {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -192,15 +221,15 @@ main .weather-cards .card .second .second-card .times {
       align-self: flex-start;
 }
 
-main .weather-cards .card .second .second-card .times .start {
+main .weather-cards .card .second .second-card .info-groups .times .start {
   margin: 5px 0;
 }
 
-main .weather-cards .card .second .second-card .times .end {
+main .weather-cards .card .second .second-card .info-groups .times .end {
   margin: 5px 0;
 }
 
-main .weather-cards .card .second .second-card .infos {
+main .weather-cards .card .second .second-card .info-groups .infos {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -217,7 +246,7 @@ main .weather-cards .card .second .second-card .infos {
           align-items: flex-start;
 }
 
-main .weather-cards .card .second .second-card .infos .info {
+main .weather-cards .card .second .second-card .info-groups .infos .info {
   margin: 5px 0;
 }
 
@@ -225,6 +254,21 @@ main .weather-cards .card .second .second-card.active {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  opacity: 1;
+}
+
+main .weather-cards .card .second .second-card.show-card {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  -webkit-transition: 1s;
+  transition: 1s;
+}
+
+main .weather-cards .card .second.show-second {
+  height: 226px;
+  -webkit-transition: 1s;
+  transition: 1s;
 }
 
 :root {

@@ -437,32 +437,36 @@
                     <div class="second">
                         <div class="second-card time2 ">
                             ${weatherImg}
-                            <div class="times">
-                                <div class="start">${tomoroAmStartTime}</div>
-                                <div class="end">${tomoroAmEndtTime}</div>
+                            <div class="info-groups">
+                                <div class="times">
+                                    <div class="start">${tomoroAmStartTime}</div>
+                                    <div class="end">${tomoroAmEndtTime}</div>
+                                </div>
+                                <div class="infos">
+                                    <div class="info max-t">天氣預報:${tomoroAmWx}度</div>
+                                    <div class="info max-t">最高${tomoroAmMaxT}度</div>
+                                    <div class="info min-t">最低${tomoroAmMinT}度</div>
+                                    <div class="info ci">${tomoroAmCi}</div>
+                                    <div class="info pop">降雨機率:${tomoroAmPop}%</div>    
+                                </div> 
                             </div>
-                            <div class="infos">
-                                <div class="info max-t">天氣預報:${tomoroAmWx}度</div>
-                                <div class="info max-t">最高${tomoroAmMaxT}度</div>
-                                <div class="info min-t">最低${tomoroAmMinT}度</div>
-                                <div class="info ci">${tomoroAmCi}</div>
-                                <div class="info pop">降雨機率:${tomoroAmPop}%</div>    
-                            </div> 
+                            
                         </div>
                         <div class="second-card time3">
                             ${weatherImg}
-                            <div class="times">
-                                <div class="start">${tomoroPmStartTime}</div>
-                                <div class="end">${tomoroPmEndtTime}</div>
+                            <div class="info-groups">
+                                <div class="times">
+                                    <div class="start">${tomoroPmStartTime}</div>
+                                    <div class="end">${tomoroPmEndtTime}</div>
+                                </div>
+                                <div class="infos">
+                                    <div class="info max-t">天氣預報:${tomoroPmWx}度</div>
+                                    <div class="info max-t">最高${tomoroPmMaxT}度</div>
+                                    <div class="info min-t">最低${tomoroPmMinT}度</div>
+                                    <div class="info ci">${tomoroPmCi}</div>
+                                    <div class="info pop">降雨機率:${tomoroPmPop}%</div>
+                                </div> 
                             </div>
-                            <div class="infos">
-                                <div class="info max-t">天氣預報:${tomoroPmWx}度</div>
-                                <div class="info max-t">最高${tomoroPmMaxT}度</div>
-                                <div class="info min-t">最低${tomoroPmMinT}度</div>
-                                <div class="info ci">${tomoroPmCi}</div>
-                                <div class="info pop">降雨機率:${tomoroPmPop}%</div>
-                            </div> 
-                            
                         </div>
                     </div>
                 </div>
@@ -475,6 +479,8 @@
                 var imgCard = document.querySelectorAll('.img')
                 // console.log(times);
                 var btns = document.querySelectorAll('.btn');
+                var second = document.querySelectorAll('.second')
+                
                 function addTime1(){
                     time1.forEach(i => {
                     i.classList.add('active');
@@ -483,16 +489,31 @@
                 function addTime2(){
                     time2.forEach(i => {
                     i.classList.add('active');
+                    i.classList.add('show-card');
+                        
                 });
                 };
                 function addTime3(){
                     time3.forEach(i => {
                     i.classList.add('active');
+                    i.classList.add('show-card');
                 });
                 };
+                function showSecond(){
+                    second.forEach(i =>{
+                    i.classList.add('show-second')    
+                    });
+                };
+                function removeSecond(){
+                    second.forEach(i =>{
+                    i.classList.remove('show-second')    
+                    });
+                };
+               
                 function removeSecondCard(){
                     secondCard.forEach(i => {
                         i.classList.remove('active')
+                        i.classList.remove('show-card')
                     });
                 };
                 function removeImgCard(){
@@ -510,14 +531,16 @@
                         console.log("按鈕" + index);
                         clearActive();
                         removeSecondCard();
-                        removeImgCard();
+                        removeSecond();
                         btns[index].classList.add('active'); 
                         if(index == 0){
                             addTime1();
                         }else if(index == 1){
                             addTime2();
+                            showSecond();
                         }else if(index == 2){
                             addTime3();
+                            showSecond();
                         } 
                     }
                 });
