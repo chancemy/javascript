@@ -269,7 +269,9 @@
         // 清除按鈕 將字串設為空 且隱藏畫布
         // 預設是隱藏 所以移除顯示的類別就可以
 
-        reset_btn.onclick = function(){
+        reset_btn.onclick = function(e){
+            e.preventDefault();
+            confirm('確定嗎');
             console.log("清除");
             height.value = "";
             weight.value = "";
